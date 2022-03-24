@@ -1,0 +1,20 @@
+{
+    "name": "sleonardo-da-silva/videoinside_php",
+
+    "authors": [
+        {
+            "name": "Francisco Vieira",
+            "email": "fvaladasvieira@gmail.com"
+        }
+    ],
+    
+    "autoload": {
+        "psr-4": {
+            "Calendar\\" : "src/Calendar",
+            "User\\" : "src/User"
+
+        }
+    },
+        
+    "require": {}
+}

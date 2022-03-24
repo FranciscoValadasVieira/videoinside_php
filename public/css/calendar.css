@@ -1,0 +1,55 @@
+.calendar {
+    position: relative;
+}
+
+.calendar__table {
+    width: 50%;
+    text-align: left;
+    height: calc(100vh - 128px);   
+}
+
+.calendar__table td {
+    padding: 10px;
+    border: 1px solid rgb(214, 196, 196);
+    vertical-align: top;
+    width: 14.29%;
+    height: 20%;
+}
+
+.calendar__table-6-weeks td {
+    height: 16.6%;
+}
+
+.calendar__weekday {
+    font-weight: bold;
+    color:rgb(243, 136, 64);
+    font-size: 0.9em;
+}
+
+
+.button_plus {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    text-decoration: none;
+    line-height: 55px;
+    vertical-align: auto;
+    text-align:center;
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    background-color: #007bff;
+    border-radius: 50%;
+
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: transform 0.7s;
+    
+}
+
+.button_plus:hover {
+    color: #FFF;
+    font-size: 47px;
+    
+}
+
