@@ -6,7 +6,7 @@ render('header', ['title'=>'Ajouter un événement']);
 <div class="container">
 <h1>Ajouter un dossier</h1>
 
-<form action="" method="post">
+<form action="add_traitement.php" method="post">
     <div class="form-control">
 
         <div class="form-group">
@@ -20,8 +20,8 @@ render('header', ['title'=>'Ajouter un événement']);
         </div><br>
 
         <div class="form-group">
-        <label for="descript">Déscription</label>
-        <textarea name="description" id="descript" class="form-control" required></textarea>
+        <label for="description">Déscription</label>
+        <textarea name="description" id="description" class="form-control" required></textarea>
         </div><br>
 
         <div class="form-group">
@@ -30,9 +30,9 @@ render('header', ['title'=>'Ajouter un événement']);
         </div><br>
 
         <div class="form-group">
-        <label for="deadline_date">Deadline</label>
+        <label for="deadline_date deadline_hour">Deadline</label>
         <input id="deadline_date" type="date" class="form-control" name="deadline_date" required>
-        <input id="endeadline_hour" type="time" class="form-control" name="endeadline_hour" required>
+        <input id="deadline_hour" type="time" class="form-control" name="deadline_hour" required>
         </div>
         <br>
         <div class="form-group">

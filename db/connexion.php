@@ -1,7 +1,7 @@
 <?php
 class Connexion extends PDO
 {
-  public function __construct($configFile = "../config/db.ini")
+  public function __construct($configFile = __DIR__ . "./../config/db.ini")
   {
     //lire le fichier ini
     $iniTab = parse_ini_file($configFile);

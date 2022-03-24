@@ -25,14 +25,3 @@ if ($password === $newUser->getPassword()) {
      exit;
 }
 
-// if (password_verify($password, $newUser->getPassword())) {
-//     $_SESSION[CURRENT_USER] = serialize($username);
-//     //renvoyer l'user vers la page d'accueil d'admin
-//      header("location:agenda.php");
-//      exit;
-
-// } else {
-//     //renvoyer l'user ver le formulaire de login
-//      header("location:login.php?erreur=1");
-//      exit;
-// }

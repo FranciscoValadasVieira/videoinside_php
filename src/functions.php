@@ -2,7 +2,7 @@
 require __DIR__ . './../vendor/autoload.php';
 
 function e404() {
-    require '../public/404.php';
+    require __DIR__ . './../public/404.php';
     exit();
 }
 

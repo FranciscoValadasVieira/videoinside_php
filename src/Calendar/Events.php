@@ -19,7 +19,7 @@ class Events {
     */
 
     public function getEventsBetween(\DateTime $start, \DateTime $end) : array {
-        $sql = "SELECT * FROM events WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
+        $sql = "SELECT * FROM dossiers WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
         $statement =$this->pdo->query($sql);
         $results = $statement->fetchAll();
         return $results;
@@ -58,7 +58,7 @@ class Events {
 
     public function findEvent(int $id) : Event {
         require __DIR__ . './Event.php';
-        $statement =  $this->pdo->query("select * from events, chef_projet WHERE events.chef_projet_id=chef_projet.id AND events.id=$id;");
+        $statement =  $this->pdo->query("select * from dossiers, chef_projet WHERE dossiers.chef_projet_id=chef_projet.id AND dossiers.id=$id;");
         $statement->setFetchMode(\PDO::FETCH_CLASS, Event::class);
         $result = $statement->fetch();
         print_r($result);
