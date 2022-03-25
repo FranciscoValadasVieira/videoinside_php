@@ -1,8 +1,8 @@
 <?php 
 
-namespace Calendar;
+namespace Agenda;
 
-class Events {
+class Dossiers {
 
     private $pdo; //inicier le pdo dès le constructor
 
@@ -18,7 +18,7 @@ class Events {
     * @return array 
     */
 
-    public function getEventsBetween(\DateTime $start, \DateTime $end) : array {
+    public function getDossiersBetween(\DateTime $start, \DateTime $end) : array {
         $sql = "SELECT * FROM dossiers WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
         $statement =$this->pdo->query($sql);
         $results = $statement->fetchAll();
@@ -34,15 +34,15 @@ class Events {
      * @return array
      */
 
-    public function getEventsBetweenByDay(\DateTime $start, \DateTime $end) : array {
-        $events = $this->getEventsBetween($start, $end);
+    public function getDossiersBetweenByDay(\DateTime $start, \DateTime $end) : array {
+        $dossiers = $this->getDossiersBetween($start, $end);
         $days = [];
-        foreach($events as $event){
-            $date = explode(' ', $event['start'])[0];
+        foreach($dossiers as $d){
+            $date = explode(' ', $d['start'])[0];
             if(!isset($days[$date])) {
-                $days[$date] = [$event];
+                $days[$date] = [$d];
             } else {
-                    $days[$date][] = $event;
+                    $days[$date][] = $d;
                 }
             }
             return $days;
@@ -50,16 +50,16 @@ class Events {
 
 
     /**
-     * Recuperer un event
+     * Recuperer un dossier
      * @param int $id 
-     * @return Event
+     * @return Dossier
      * @throws \Exception
      */
 
-    public function findEvent(int $id) : Event {
-        require __DIR__ . './Event.php';
+    public function findDossier(int $id) : Dossier {
+        require __DIR__ . './Dossier.php';
         $statement =  $this->pdo->query("select * from dossiers, chef_projet WHERE dossiers.chef_projet_id=chef_projet.id AND dossiers.id=$id;");
-        $statement->setFetchMode(\PDO::FETCH_CLASS, Event::class);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, Dossier::class);
         $result = $statement->fetch();
         print_r($result);
         if ($result === false) {
@@ -69,5 +69,6 @@ class Events {
     
     } 
 
+   
 }
  

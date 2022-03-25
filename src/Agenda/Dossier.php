@@ -1,7 +1,7 @@
 <?php
-namespace Calendar;
+namespace Agenda;
 
-class Event {
+class Dossier {
 
     private $id;
     private $nom;

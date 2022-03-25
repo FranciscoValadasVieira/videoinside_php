@@ -11,9 +11,9 @@ class ComposerStaticInitfd664c99e457d3e11d758d6cb562272b
         array (
             'User\\' => 5,
         ),
-        'C' => 
+        'A' => 
         array (
-            'Calendar\\' => 9,
+            'Agenda\\' => 7,
         ),
     );
 
@@ -22,9 +22,9 @@ class ComposerStaticInitfd664c99e457d3e11d758d6cb562272b
         array (
             0 => __DIR__ . '/../..' . '/src/User',
         ),
-        'Calendar\\' => 
+        'Agenda\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/Calendar',
+            0 => __DIR__ . '/../..' . '/src/Agenda',
         ),
     );
 

@@ -1,5 +1,5 @@
 <?php
-namespace Calendar;
+namespace Agenda;
 use DateTime;
 
 

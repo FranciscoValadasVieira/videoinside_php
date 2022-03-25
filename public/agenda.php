@@ -5,21 +5,21 @@
     include __DIR__ . '/includes/header.php';
 
     $pdo = get_pdo();
-    $events = new Calendar\Events($pdo);
-    $month = new Calendar\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
+    $dossiers = new Agenda\Dossiers($pdo);
+    $month = new Agenda\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
     $start = $month->getStartingDay();
     $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
     $weeks = $month->getWeeks();
     $end = (clone $start) -> modify ('+' . (6 + 7 * ($weeks - 1)) . 'days');
     // var_dump($end); 
-    $events = $events->getEventsBetweenByDay($start, $end);
+    $dossiers = $dossiers->getDossiersBetweenByDay($start, $end);
     // var_dump($events);
-    var_dump($events);
+    var_dump($dossiers);
 
     ?>
     
     
-<!-- Creation de ma table calendrier -->
+<!--Agenda MotionInside-->
 
 <div class="calendar">
 
@@ -31,24 +31,26 @@
             <a href="/videoinside_php/public/agenda.php?month=<?=$month->previousMonth()->month; ?> &year=<?=$month->previousMonth()->year;?>">Precedent</a>
             <a href="/videoinside_php/public/agenda.php?month=<?=$month->nextMonth()->month; ?> &year=<?=$month->nextMonth()->year;?>">Apres</a>
         </div>
-    
     </div>
+
+    <!-- Creation du Calendrier -->
+
     <table class="calendar__table calendar__table-<?=$weeks;?>-weeks">
     <?php for ($i = 0; $i < $weeks; $i++) : ?>
         
         <tr>
             <?php foreach($month->days as $k => $day) : 
                 $date = (clone $start)->modify("+" . ($k+$i*7) . "days");
-                $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
+                $dossiersForDay = $dossiers[$date->format('Y-m-d')] ?? [];
             ?>   
         <td class="<?= $month->withinMonth($date) ? '' : 'calendar__othermonth';?>">
             <?php if ($i === 0) : ?>
                 <div class="calendar__weekday"><?= $day?></div>
             <?php endif;?>
             <div class="calendar__day"> <?= $date->format('d');?></div>
-            <?php foreach ($eventsForDay as $event): ?>
+            <?php foreach ($dossiersForDay as $d): ?>
                 <div class="calendar__event">
-                   <?= (new DateTime($event['start']))->format('H:i')?> - <a href="/videoinside_php/public/dossier/show.php?id=<?= $event['id'];?>"><?= h($event['nom']); ?></a>
+                   <?= (new DateTime($d['start']))->format('H:i')?> - <a href="/videoinside_php/public/dossier/show.php?id=<?= $d['id'];?>"><?= h($d['nom']); ?></a>
                 </div>
             <?php endforeach; ?>
         </td>

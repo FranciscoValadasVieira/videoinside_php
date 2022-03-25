@@ -1,12 +1,12 @@
 
 <?php
     require __DIR__ . './../../src/functions.php';
-    require __DIR__ . './../../src/Calendar/Events.php';
+    require __DIR__ . './../../src/Agenda/Dossiers.php';
     
     // création du PDOStatement
     $pdo = get_pdo();
-    $events = new Calendar\Events($pdo);
-    print_r($events); //debogage
+    $dossiers = new Agenda\Dossiers($pdo);
+    print_r($dossiers); //debogage
     
     
     if (!isset($_GET['id'])) {
@@ -14,24 +14,24 @@
     }
     
     try {
-    $event = $events->findEvent($_GET['id'] ?? null);
+    $dossier = $dossiers->findDossier($_GET['id'] ?? null);
     // print_r($event);//debogage
-    dd($event);//debogage/
+    dd($dossier);//debogage/
     
 } catch (\Exception $e) {
     e404();
 }
 
-render('header', ['title' => $event-> getNom()]); 
+render('header', ['title' => $dossier-> getNom()]); 
     ?>
    
 
-<h1><?= h($event->getNom()); ?></h1>
+<h1><?= h($dossier->getNom()); ?></h1>
 
 <ul>
-<li>Start: <?= $event->getStart()->format('d/m/Y');?></li>
-<li>Description: <?= h($event->getDescription());?></li>
-<li>Chef(e) de projet: <?= h($event->getNomCdp())?></li>
-<li>Deadline: <?= $event->getDeadline()->format('d/m/Y - H:i');?></li>
+<li>Start: <?= $dossier->getStart()->format('d/m/Y');?></li>
+<li>Description: <?= h($dossier->getDescription());?></li>
+<li>Chef(e) de projet: <?= h($dossier->getNomCdp())?></li>
+<li>Deadline: <?= $dossier->getDeadline()->format('d/m/Y - H:i');?></li>
 </ul>
  

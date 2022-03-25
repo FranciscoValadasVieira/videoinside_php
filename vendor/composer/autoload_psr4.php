@@ -7,5 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'User\\' => array($baseDir . '/src/User'),
-    'Calendar\\' => array($baseDir . '/src/Calendar'),
+    'Agenda\\' => array($baseDir . '/src/Agenda'),
 );

@@ -1,6 +1,14 @@
 <?php 
 require __DIR__ . "./../../src/functions.php";
+require __DIR__ . "./../../db/connexion.php";
 render('header', ['title'=>'Ajouter un événement']);
+
+//Récuperation des chefs de projet
+$connexion = new Connexion();
+$pdoStatement = $connexion->prepare("select nom_cdp from chef_projet;");
+$pdoStatement->execute();
+$chefs= $pdoStatement->fetchAll();
+
 ?>
 
 <div class="container">
@@ -25,8 +33,21 @@ render('header', ['title'=>'Ajouter un événement']);
         </div><br>
 
         <div class="form-group">
-        <label for="cdp">Chef(e) de projet</label>
-        <input id="cdp" type="text" class="form-control" name="nom_cdp" required >
+        <label for="cdp">Chef(e) de projet</label><br>
+        <select  name="nom_cdp" class="form-control">
+            <?php foreach ($chefs as $c): ?>
+                <?='<option value="' . $c['nom_cdp'] .'">'.$c['nom_cdp'].'</option>'?>
+            <?php endforeach;?>
+            <option action="onclick" id="autre" value="Autre">Autre</option>
+        </select>
+        <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
+        
+        <script>
+            var autre = document.getElementById('autre');
+            autre.addEventListener('onclick', function(){
+                innerHTML="<input>";
+            })
+        </script>    
         </div><br>
 
         <div class="form-group">
