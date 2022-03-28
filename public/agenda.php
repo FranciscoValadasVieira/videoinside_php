@@ -50,7 +50,7 @@
             <div class="calendar__day"> <?= $date->format('d');?></div>
             <?php foreach ($dossiersForDay as $d): ?>
                 <div class="calendar__event">
-                   <?= (new DateTime($d['start']))->format('H:i')?> - <a href="/videoinside_php/public/dossier/show.php?id=<?= $d['id'];?>"><?= h($d['nom']); ?></a>
+                   <?= (new DateTime($d['deadline']))->format('H:i')?> - <a href="/videoinside_php/public/dossier/show.php?id=<?= $d['id'];?>"><?= h($d['nom']); ?></a>
                 </div>
             <?php endforeach; ?>
         </td>
