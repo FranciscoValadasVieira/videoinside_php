@@ -5,18 +5,17 @@ require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
 
 //recuperer tout les données du formulaire de ajout
-$nomDossier = getPostParam("nom");
+$nom = getPostParam("nom");
 $start = getPostParam("start");
 $description = getPostParam("description");
 $cdp = getPostParam("nom_cdp");
 $deadlineDate = getPostParam("deadline_date");
 $deadlineHour = getPostParam("deadline_hour");
-
-
+$deadline = $deadlineDate . " " . $deadlineHour;
 
 
 // $erreurs = [];
-// //validation
+//validation
 
 
 // //nom
@@ -61,10 +60,7 @@ $deadlineHour = getPostParam("deadline_hour");
   //on insère les données dans la BDD
 
 //   try {
-    //sauvegarder le fichier sur le serveur
-    
-   
-    
+    //sauvegarder le fichier sur le serveur  
 
 //     header("location:liste_stagiaire.php");
 //   } catch (PDOException $ex) {
@@ -76,3 +72,34 @@ $deadlineHour = getPostParam("deadline_hour");
 //   }
 
 
+
+//Insertion dans la BDD
+
+//Récuperation ID du chef de projet
+$connexionFindChef = new Connexion();
+$pdoFindChef = $connexionFindChef->prepare("select id from chef_projet where nom_cdp='".$cdp."';");
+$pdoFindChef->execute();
+var_dump($pdoFindChef);
+$chefId= $pdoFindChef->fetch()[0];
+var_dump($chefId);
+
+//SI le chef de projet n'est pas dans notre BDD, on lui insère, et on refait notre requête de recuperation de ID du chef de projet
+
+  if ($chefId === False) {
+    $connexionInsertChef = new Connexion;
+    $pdoInsertChef = $connexionInsertChef->prepare('INSERT INTO chef_projet VALUES (null,"'.$cdp.'");');
+    $pdoInsertChef->execute();
+    $pdoFindChef = $connexionFindChef->prepare("select id from chef_projet where nom_cdp='".$cdp."';");
+    $pdoFindChef->execute();
+    $chefId= $pdoFindChef->fetch()[0];
+
+  } 
+
+// Insertion d'un nouveau dossier dans la BDD  
+$connexionInsertDossier = new Connexion;
+$sql = "INSERT INTO dossiers (id, nom, start, description, chef_projet_id, deadline) values (null, :nom, :start, :description, :chef_projet_id, :deadline)";
+$pdoInsertDossier = $connexionInsertDossier->prepare($sql);
+$tab = [":nom" => $nom, ":start" => $start,":description" => $description, ":chef_projet_id" => '2', ":deadline" => $deadline];
+$pdoInsertDossier->execute($tab);
+
+?>

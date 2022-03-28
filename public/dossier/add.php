@@ -32,22 +32,22 @@ $chefs= $pdoStatement->fetchAll();
         <textarea name="description" id="description" class="form-control" required></textarea>
         </div><br>
 
-        <div class="form-group">
-        <label for="cdp">Chef(e) de projet</label><br>
-        <select  name="nom_cdp" class="form-control">
+        <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
+        <!-- <script >
+            function optionsChef(){
+            document.getElementById("autreInput").removeAttribute("hidden");
+            }
+        </script> -->
+
+          <div class="form-group">
+        <label for="cdp">Chef de projet</label><br>
+        <select  id = "optionsChef" name="nom_cdp" class="form-control" onchange="optionsChef();">
             <?php foreach ($chefs as $c): ?>
                 <?='<option value="' . $c['nom_cdp'] .'">'.$c['nom_cdp'].'</option>'?>
             <?php endforeach;?>
-            <option action="onclick" id="autre" value="Autre">Autre</option>
+            <option id="autre" value="Autre">Autre</option>
         </select>
-        <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
-        
-        <script>
-            var autre = document.getElementById('autre');
-            autre.addEventListener('onclick', function(){
-                innerHTML="<input>";
-            })
-        </script>    
+        <!-- <input type="hidden" id="autreInput" name="nom_cdp" class="form-control" placeholder="--- Inserez le nom du chef de projet ---">    -->
         </div><br>
 
         <div class="form-group">
