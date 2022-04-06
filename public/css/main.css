@@ -1,0 +1,21 @@
+#main {
+    position: fixed;
+    background-color: rgb(4, 86, 107);
+    width: 100vw;
+    height: 120vh;
+    margin-top: -7rem;
+    margin-left:-0.5rem;
+    
+
+}
+
+#title {
+    color: rgb(255, 255, 255);
+    position: absolute;
+    margin-top: 40vw;
+    margin-left: 2rem;
+    font-size: 5rem;
+    font-family:'Lalezar', cursive;
+    text-transform: uppercase;
+}
+

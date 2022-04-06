@@ -1,7 +1,7 @@
 <?php 
 require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
-render('header', ['title'=>'Ajouter un événement']);
+render('header', ['title'=>'Ajouter un Dossier']);
 
 //Récuperation des chefs de projet
 $connexion = new Connexion();
@@ -29,7 +29,7 @@ $chefs= $pdoStatement->fetchAll();
 
         <div class="form-group">
         <label for="description">Déscription</label>
-        <textarea name="description" id="description" class="form-control" required></textarea>
+        <input name="description" id="description" class="form-control" required></input>
         </div><br>
 
         <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
@@ -40,13 +40,15 @@ $chefs= $pdoStatement->fetchAll();
         </script> -->
 
           <div class="form-group">
-        <label for="cdp">Chef de projet</label><br>
-        <select  id = "optionsChef" name="nom_cdp" class="form-control" onchange="optionsChef();">
+        <label for="nom_cdp">Chef de projet</label><br>
+        <select  id = "nom_cdp" name="nom_cdp" class="form-control">
             <?php foreach ($chefs as $c): ?>
                 <?='<option value="' . $c['nom_cdp'] .'">'.$c['nom_cdp'].'</option>'?>
+               
             <?php endforeach;?>
             <option id="autre" value="Autre">Autre</option>
         </select>
+        
         <!-- <input type="hidden" id="autreInput" name="nom_cdp" class="form-control" placeholder="--- Inserez le nom du chef de projet ---">    -->
         </div><br>
 

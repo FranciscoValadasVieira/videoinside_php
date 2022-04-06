@@ -27,7 +27,7 @@ function h(?string $value) : string {
     if ($value === null) {
         return '';
     }
-    return htmlentities($value);
+    return htmlspecialchars($value);
 }
 
 function render(string $include, $parameters = []) {

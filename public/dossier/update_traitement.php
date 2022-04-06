@@ -5,7 +5,9 @@ require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
 require __DIR__ . "./../../dao/DossierDAO.php";
 
-//recuperer tout les données du formulaire de ajout
+//recuperer tout les données du formulaire de modification
+
+$id = $_GET['id'];
 $nom = getPostParam("nom");
 $start = getPostParam("start");
 $description = getPostParam("description");
@@ -13,6 +15,10 @@ $cdp = getPostParam("nom_cdp");
 $deadlineDate = getPostParam("deadline_date");
 $deadlineHour = getPostParam("deadline_hour");
 $deadline = $deadlineDate . " " . $deadlineHour;
+var_dump($deadline);
+var_dump($cdp);
+var_dump($id);
+
 
 
 //VALIDATION DES DONNEES
@@ -57,18 +63,18 @@ if (!$valide) {
 // }
 
 
-//Verification de tbale "errors"
-if (count($errors) > 0) {
-  //on renvoie l'user vers le form
-  $_SESSION["errors"] = $errors; //on ajoute les msgs d'erreur dans la Session
-  header("location:add.php");
+// //Verification de table "errors"
+// if (count($errors) > 0) {
+//   //on renvoie l'user vers le form
+//   $_SESSION["errors"] = $errors; //on ajoute les msgs d'erreur dans la Session
+//   header("location:update.php?id=".$_GET['id']);
 
-} else {
+// } else {
     
-    //Insertion dans la BDD
+//     //update dans la BDD
 
-    //Récuperation ID du chef de projet
-  try {
+//     //Récuperation ID du chef de projet
+//   try {
     
       // findChefId($cdp); tentative de creation du DosssierDAO
     
@@ -89,16 +95,17 @@ if (count($errors) > 0) {
           $chefId= $pdoFindChef->fetch()[0];
       } 
 
-      // Insertion d'un nouveau dossier dans la BDD  
-      $connexionInsertDossier = new Connexion;
-      $sql = "INSERT INTO dossiers (id, nom, start, description, chef_projet_id, deadline) values (null, :nom, :start, :description, :chef_projet_id, :deadline)";
-      $pdoInsertDossier = $connexionInsertDossier->prepare($sql);
-      $tab = [":nom" => $nom, ":start" => $start,":description" => $description, ":chef_projet_id" => $chefId, ":deadline" => $deadline];
-      $pdoInsertDossier->execute($tab);
+      // Modification du dossier dans la BDD  
+      $connexionUpdateDossier = new Connexion;
+      var_dump($connexionUpdateDossier);
+      $sql = "UPDATE dossiers SET nom='$nom', start='$start', description='$description', chef_projet_id='$chefId', deadline='$deadline' WHERE id=$id;";
+      var_dump($sql);
+      $pdoUpdateDossier = $connexionUpdateDossier->prepare($sql);
+      $pdoUpdateDossier->execute();
       
-      } catch (PDOException $ex) {
-          // var_dump($ex);
-          header("location:add.php?erreur=dbErreur");
-      }
-}
+    //   } catch (PDOException $ex) {
+    //       // var_dump($ex);
+    //       header("location:update.php?erreur=dbErreur");
+    //   }
+// }
     ?>

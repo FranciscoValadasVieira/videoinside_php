@@ -1,8 +1,8 @@
 
     <?php
 
+    include __DIR__ . './includes/header.php';
     require_once __DIR__ . './../src/functions.php';
-    include __DIR__ . '/includes/header.php';
 
     $pdo = get_pdo();
     $dossiers = new Agenda\Dossiers($pdo);

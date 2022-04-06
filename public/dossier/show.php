@@ -34,4 +34,7 @@ render('header', ['title' => $dossier-> getNom()]);
 <li>Chef(e) de projet: <?= h($dossier->getNomCdp())?></li>
 <li>Deadline: <?= $dossier->getDeadline()->format('d/m/Y - H:i');?></li>
 </ul>
+
+<a role="button" href="/videoinside_php/public/dossier/update.php?id=<?= $_GET['id'];?>">Modifier</a>
+<a role="button" href="/videoinside_php/public/dossier/remove.php?id=<?= $_GET['id'];?>">Supprimer</a>
  

@@ -1,9 +1,15 @@
+#removeChef {
+    text-align: right;
+    border-color: black;
+}
+
+
 .calendar {
     position: relative;
 }
 
 .calendar__table {
-    width: 50%;
+    width: 100%;
     text-align: left;
     height: calc(100vh - 128px);   
 }

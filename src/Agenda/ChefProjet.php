@@ -6,12 +6,6 @@ class ChefProjet {
 
 private $id;
 private $nomCdp;
-private $pdo;
-
-// //inicier le pdo dès le constructor
-// public function __construct(\PDO $pdo){
-//         $this->pdo = $pdo;
-//     }
 
 /**
  * Get the value of id
@@ -71,5 +65,11 @@ public function CheckChef($nomCdp) {
         };
         return $chef; 
     }
+
+
+public function RemoveChef($nomCdp){ 
+
+
+}    
 
 }
