@@ -1,5 +1,6 @@
 <?php
-include __DIR__ . "./includes/header.php";
+include __DIR__ . './includes/header_main.php';
+include __DIR__ . "./includes/header_agenda.php";
 require_once __DIR__ .  "./../src/functions.php";
 require_once __DIR__ . "./../dao/UserDAO.php";
 $user = new UserDAO;

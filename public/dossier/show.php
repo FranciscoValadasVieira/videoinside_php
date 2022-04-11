@@ -1,5 +1,6 @@
 
 <?php
+    include __DIR__ . './../includes/header_main.php';
     require __DIR__ . './../../src/functions.php';
     require __DIR__ . './../../src/Agenda/Dossiers.php';
     
@@ -22,7 +23,7 @@
     e404();
 }
 
-render('header', ['title' => $dossier-> getNom()]); 
+render('header_agenda', ['title' => $dossier-> getNom()]); 
     ?>
    
 

@@ -1,6 +1,6 @@
 <?php 
-
-include __DIR__ . './../includes/header.php';
+include __DIR__ . './../includes/header_main.php';
+include __DIR__ . './../includes/header_agenda.php';
 require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
 require __DIR__ . "./../../dao/DossierDAO.php";
@@ -63,18 +63,17 @@ if (!$valide) {
 // }
 
 
-// //Verification de table "errors"
-// if (count($errors) > 0) {
-//   //on renvoie l'user vers le form
-//   $_SESSION["errors"] = $errors; //on ajoute les msgs d'erreur dans la Session
-//   header("location:update.php?id=".$_GET['id']);
+//Verification de table "errors"
+if (count($errors) > 0) {
+  //on renvoie l'user vers le form
+  $_SESSION["errors"] = $errors; //on ajoute les msgs d'erreur dans la Session
+  header("location:update.php?id=".$_GET['id']);
 
-// } else {
+} else {
     
-//     //update dans la BDD
-
-//     //Récuperation ID du chef de projet
-//   try {
+    //update dans la BDD
+    //Récuperation ID du chef de projet
+  try {
     
       // findChefId($cdp); tentative de creation du DosssierDAO
     
@@ -103,9 +102,9 @@ if (!$valide) {
       $pdoUpdateDossier = $connexionUpdateDossier->prepare($sql);
       $pdoUpdateDossier->execute();
       
-    //   } catch (PDOException $ex) {
-    //       // var_dump($ex);
-    //       header("location:update.php?erreur=dbErreur");
-    //   }
-// }
+      } catch (PDOException $ex) {
+          // var_dump($ex);
+          header("location:update.php?erreur=dbErreur");
+      }
+}
     ?>

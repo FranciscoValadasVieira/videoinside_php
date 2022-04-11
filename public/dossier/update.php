@@ -1,7 +1,8 @@
 <?php 
+include __DIR__ . './../includes/header_main.php';
 require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
-render('header', ['title'=>'Modifier un Dossier']);
+render('header_agenda', ['title'=>'Modifier un Dossier']);
 
 //Récuperation des chefs de projet
 $connexionFindCHef = new Connexion();
@@ -73,7 +74,7 @@ var_dump($deadline);
                 <?php endforeach;?>
                 <option id="autre" value="autre">-- Ajouter un chef de projet --</option>
             </select>
-            <input class="form-control" id="inputAutre" name="nom_cdp" placeholder="Put de new chef de projet aqui" type="hidden">
+            
 
         </div><br>
 

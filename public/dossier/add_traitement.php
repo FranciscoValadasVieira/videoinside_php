@@ -1,6 +1,6 @@
 <?php 
-
-include __DIR__ . './../includes/header.php';
+include __DIR__ . './../includes/header_main.php';
+include __DIR__ . './../includes/header_agenda.php';
 require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
 require __DIR__ . "./../../dao/DossierDAO.php";

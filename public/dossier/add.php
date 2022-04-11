@@ -1,7 +1,8 @@
 <?php 
+include __DIR__ . './../includes/header_main.php';
 require __DIR__ . "./../../src/functions.php";
 require __DIR__ . "./../../db/connexion.php";
-render('header', ['title'=>'Ajouter un Dossier']);
+render('header_agenda', ['title'=>'Ajouter un Dossier']);
 
 //Récuperation des chefs de projet
 $connexion = new Connexion();
@@ -10,6 +11,12 @@ $pdoStatement->execute();
 $chefs= $pdoStatement->fetchAll();
 
 ?>
+<style>
+    
+.hidden {
+    display: none;
+}
+</style>
 
 <div class="container">
 <h1>Ajouter un dossier</h1>
@@ -33,23 +40,25 @@ $chefs= $pdoStatement->fetchAll();
         </div><br>
 
         <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
-        <!-- <script >
-            function optionsChef(){
-            document.getElementById("autreInput").removeAttribute("hidden");
-            }
-        </script> -->
+        
+        
 
-          <div class="form-group">
+        <div class="form-group">
         <label for="nom_cdp">Chef de projet</label><br>
         <select  id = "nom_cdp" name="nom_cdp" class="form-control">
             <?php foreach ($chefs as $c): ?>
-                <?='<option value="' . $c['nom_cdp'] .'">'.$c['nom_cdp'].'</option>'?>
-               
+                <?='<option value="' . $c['nom_cdp'] .'">'.$c['nom_cdp'].'</option>'?>       
             <?php endforeach;?>
             <option id="autre" value="Autre">Autre</option>
         </select>
+
+        <div id="autre-chef" class="hidden">
+        <input type='text' name='autre_chef' value='' class='form-control'/>
+        </div>
         
-        <!-- <input type="hidden" id="autreInput" name="nom_cdp" class="form-control" placeholder="--- Inserez le nom du chef de projet ---">    -->
+        
+
+        
         </div><br>
 
         <div class="form-group">
@@ -66,6 +75,20 @@ $chefs= $pdoStatement->fetchAll();
 </form>
 
 </div>
+
+<script>
+    var select = document.getElementById('nom_cdp');
+    select.addEventListener('change', addField);
+    function addField(event){
+        console.log(event.target.value);
+        let autre = document.getElementById('autre-chef');
+               if (event.target.value =='Autre') {
+                   autre.classList.remove("hidden");
+               } else {
+                autre.classList.add("hidden");
+               }
+            }
+        </script>
 
 <?php 
 render('footer');

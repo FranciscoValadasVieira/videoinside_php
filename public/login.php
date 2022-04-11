@@ -1,6 +1,7 @@
 
 <?php
-include __DIR__ . "./includes/header.php";
+include __DIR__ . './includes/header_main.php';
+include __DIR__ . "./includes/header_agenda.php";
 ?>
 
 <form method="post" action="login_traitement.php">
