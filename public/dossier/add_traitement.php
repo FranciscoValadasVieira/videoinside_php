@@ -10,10 +10,16 @@ $nom = getPostParam("nom");
 $start = getPostParam("start");
 $description = getPostParam("description");
 $cdp = getPostParam("nom_cdp");
+$autreChef= getPostParam("autre_chef");
+if ($cdp=="Autre") {
+  $cdp=$autreChef;
+}
 $deadlineDate = getPostParam("deadline_date");
 $deadlineHour = getPostParam("deadline_hour");
 $deadline = $deadlineDate . " " . $deadlineHour;
 
+var_dump($cdp);
+var_dump($autreChef);
 
 //VALIDATION DES DONNEES
 $errors = [];
@@ -25,7 +31,7 @@ if (!$valide) {
   $errors["nom"] = "Le nom est invalide!";
 }
 
-// //start   ############ a verifier si est vraiment necessaire ######################"
+//start   ############ a verifier si est vraiment necessaire ######################"
 // $valide = 
 // if (!$valide) {
 //   $errors["start"] = "La date d'entrée du dossier est invalide!";
@@ -37,7 +43,7 @@ if (!$valide) {
   $errors["description"] = "La description est obligatoire!";
 }
 
-//Chef de projet
+// Chef de projet
 $motif = "/^[a-zA-Z]+[a-zA-Z\s\-]+[a-zA-Z]+$/";
 $valide = h(preg_match($motif, $cdp));
 if (!$valide) {
@@ -57,7 +63,7 @@ if (!$valide) {
 // }
 
 
-//Verification de tbale "errors"
+//Verification de table "errors"
 if (count($errors) > 0) {
   //on renvoie l'user vers le form
   $_SESSION["errors"] = $errors; //on ajoute les msgs d'erreur dans la Session
@@ -80,7 +86,7 @@ if (count($errors) > 0) {
       var_dump($chefId);
 
       //SI le chef de projet n'est pas dans notre BDD, on lui insère, et on refait notre requête de recuperation de ID du chef de projet
-      if ($chefId === False) {
+      if ($chefId==null) {
           $connexionInsertChef = new Connexion;
           $pdoInsertChef = $connexionInsertChef->prepare('INSERT INTO chef_projet VALUES (null,"'.$cdp.'");');
           $pdoInsertChef->execute();

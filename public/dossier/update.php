@@ -22,7 +22,13 @@ $deadline = explode(" ", $dossier['deadline']); //Récuperation de la date et de
 var_dump($deadline);
 
 ?>
-
+<style>
+    
+    .hidden {
+        display: none;
+    }
+    </style>
+    
 
 <div class="container">
 <h1>Modifier un dossier</h1>
@@ -45,22 +51,8 @@ var_dump($deadline);
             <input name="description" id="description" class="form-control" required value="<?=$dossier['description']?>"></input>
         </div><br>
 
-        <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
-        <!-- <script >
-            function optionsChef(){
-            document.getElementById("autreInput").removeAttribute("hidden");
-            }
-        </script> -->
-        <script type="text/javascript">
-                function showInput('autre'){
-                  var autre = document.getElementById("autre");
-                  autre.addEventListener("click", function(){
-                    autre.removeAttribute('hidden');
-                  });
-
-                }
-        </script> 
-
+  
+   
         <div class="form-group">
             <label for="nom_cdp">Chef de projet</label><br>
             <select  id = "nom_cdp" name="nom_cdp" class="form-control">
@@ -72,9 +64,12 @@ var_dump($deadline);
                         echo '<option value="' . $c['nom_cdp'] .'">'. $c['nom_cdp'].'</option>';
                     } ?>
                 <?php endforeach;?>
-                <option id="autre" value="autre">-- Ajouter un chef de projet --</option>
+                <option id="autre" value="Autre">Autre</option>
             </select>
-            
+        
+        <div id="autre-chef" class="hidden">
+        <input type='text' name='autre_chef' value='' class='form-control' placeholder="Put le nom d chef aqui"/>
+        </div>
 
         </div><br>
 
@@ -92,6 +87,21 @@ var_dump($deadline);
 </form>
 
 </div>
+
+<!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
+<script>
+    var select = document.getElementById('nom_cdp');
+    select.addEventListener('change', addField);
+    function addField(event){
+        console.log(event.target.value);
+        let autre = document.getElementById('autre-chef');
+               if (event.target.value =='Autre') {
+                   autre.classList.remove("hidden");
+               } else {
+                autre.classList.add("hidden");
+               }
+            }
+</script>
 
 <?php 
 render('footer');

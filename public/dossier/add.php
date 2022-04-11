@@ -39,10 +39,6 @@ $chefs= $pdoStatement->fetchAll();
         <input name="description" id="description" class="form-control" required></input>
         </div><br>
 
-        <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
-        
-        
-
         <div class="form-group">
         <label for="nom_cdp">Chef de projet</label><br>
         <select  id = "nom_cdp" name="nom_cdp" class="form-control">
@@ -76,6 +72,7 @@ $chefs= $pdoStatement->fetchAll();
 
 </div>
 
+<!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
 <script>
     var select = document.getElementById('nom_cdp');
     select.addEventListener('change', addField);
@@ -88,7 +85,7 @@ $chefs= $pdoStatement->fetchAll();
                 autre.classList.add("hidden");
                }
             }
-        </script>
+</script>
 
 <?php 
 render('footer');
