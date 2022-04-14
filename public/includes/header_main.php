@@ -26,7 +26,7 @@
 <!-- Création du nav du site -->
   <div id="menu">
     
-    <a id="title" href="/videoinside_php/public/index.php">Videoinside</a>
+    <a id="title" href="/videoinside_php/public/index.php"><h1>Videoinside</h1></a>
     
     <nav>        
       <a class="menu" href="/videoinside_php/public/agence.php">L'Agence</a>
@@ -36,7 +36,7 @@
               <li class="menu submenu"><a href="">Captation Live</a></li>
           </ul>  
       <a class="menu" href="">Contacts</a>
-      <a class="menu" href="/videoinside_php/public/agenda.php">Agenda Motion Inside</a>
+      <a class="menu" href="/videoinside_php/public/agenda_month.php">Agenda Motion Inside</a>
     </nav>
   </div>
       

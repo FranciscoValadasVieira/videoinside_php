@@ -1,5 +1,5 @@
 
-    <?php
+<?php
 
     include __DIR__ . './includes/header_main.php';
     include __DIR__ . './includes/header_agenda.php';
@@ -29,8 +29,8 @@
     <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
         <h1><?= $month->toString();?></h1>
         <div>
-            <a href="/videoinside_php/public/agenda.php?month=<?=$month->previousMonth()->month; ?> &year=<?=$month->previousMonth()->year;?>">Precedent</a>
-            <a href="/videoinside_php/public/agenda.php?month=<?=$month->nextMonth()->month; ?> &year=<?=$month->nextMonth()->year;?>">Apres</a>
+            <a href="/videoinside_php/public/agenda_month.php?month=<?=$month->previousMonth()->month; ?> &year=<?=$month->previousMonth()->year;?>">Precedent</a>
+            <a href="/videoinside_php/public/agenda_month.php?month=<?=$month->nextMonth()->month; ?> &year=<?=$month->nextMonth()->year;?>">Apres</a>
         </div>
     </div>
 

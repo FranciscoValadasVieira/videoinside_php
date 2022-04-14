@@ -60,6 +60,7 @@ var_dump($deadline);
                     <?php $selected = $c['nom_cdp'] == $dossier['nom_cdp']; ?>
                     <?php if ($selected) { //Récuperation du chef de projet 
                         echo '<option value="' . $c['nom_cdp'] .'" selected>'. $c['nom_cdp'].'</option>';
+                        echo '<a>x</a>';
                     } else {
                         echo '<option value="' . $c['nom_cdp'] .'">'. $c['nom_cdp'].'</option>';
                     } ?>

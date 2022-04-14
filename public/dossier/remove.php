@@ -7,7 +7,7 @@ require __DIR__ . "./../../db/connexion.php";
 $connexionRemoveDossier = new Connexion;
 $pdoRemoveDossier = $connexionRemoveDossier->prepare("DELETE from dossiers where id=".$_GET['id'].";");
 $pdoRemoveDossier->execute();
-header("location:./../agenda.php");
+header("location:./../agenda_month.php");
 exit;
 
 

@@ -71,15 +71,7 @@ class Month {
         return $weeks;
     }
 
-     /**
-     * je recupere une semaine
-     */ 
-
-     public function getOneWeek() {
-         
-
-     }
-
+     
 
     /**Savoir si le jour est dans le mois
      * @return bool
