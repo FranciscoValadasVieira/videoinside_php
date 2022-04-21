@@ -19,7 +19,7 @@ class Dossiers {
     */
 
     public function getDossiersBetween(\DateTime $start, \DateTime $end) : array {
-        $sql = "SELECT * FROM dossiers WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
+        $sql = "SELECT * FROM dossiers WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}' ORDER BY deadline ASC;";
         $statement =$this->pdo->query($sql);
         $results = $statement->fetchAll();
         return $results;

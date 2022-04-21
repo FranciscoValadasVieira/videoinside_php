@@ -38,4 +38,7 @@ render('header_agenda', ['title' => $dossier-> getNom()]);
 
 <a role="button" href="/videoinside_php/public/dossier/update.php?id=<?= $_GET['id'];?>">Modifier</a>
 <a role="button" href="/videoinside_php/public/dossier/remove.php?id=<?= $_GET['id'];?>">Supprimer</a>
- 
+
+<?php
+include __DIR__ . './../includes/footer.php';
+?>

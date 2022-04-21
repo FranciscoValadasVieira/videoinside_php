@@ -1,8 +1,9 @@
 <?php 
 include __DIR__ . './../includes/header_main.php';
-require __DIR__ . "./../../src/functions.php";
+include __DIR__ . './../includes/header_agenda.php';
 require __DIR__ . "./../../db/connexion.php";
-render('header_agenda', ['title'=>'Ajouter un Dossier']);
+require __DIR__ . "./../../src/functions.php";
+
 
 //Récuperation des chefs de projet
 $connexion = new Connexion();
@@ -71,6 +72,7 @@ $chefs= $pdoStatement->fetchAll();
 </form>
 
 </div>
+<br>
 
 <!-- utilisation de JS, pour afficher le champ INPUT pour inserer un nouveau chef de projet dans le cas ou "option=Autre" est choisi-->
 <script>
@@ -88,5 +90,6 @@ $chefs= $pdoStatement->fetchAll();
 </script>
 
 <?php 
-render('footer');
+include __DIR__ . './../includes/footer.php';
+
 ?>

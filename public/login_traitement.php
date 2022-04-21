@@ -16,7 +16,7 @@ $newUser = $user->findByUsername($username);
 if ($password === $newUser->getPassword()) {
     $_SESSION[CURRENT_USER] = serialize($username);
     //renvoyer l'user vers la page d'accueil d'admin
-     header("location:agenda.php");
+     header("location:agenda_month.php");
      exit;
 
 } else {

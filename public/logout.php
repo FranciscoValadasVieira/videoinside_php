@@ -6,4 +6,4 @@ unset($_SESSION[CURRENT_USER]); ?>
 
 <a href="login.php" class="btn btn-primary">Se Connecter</a>
 
-<?php header('location:' . BASE_PATH . '/public/agenda.php');?>
+<?php header('location:' . BASE_PATH . '/public/agenda_month.php');?>

@@ -1,22 +1,19 @@
-#removeChef {
-    text-align: right;
-    border-color: black;
-}
-
 
 .calendar {
     position: relative;
 }
 
 .calendar__table {
-    width: 100%;
+    width: 90%;
+    margin:auto;
     text-align: left;
     height: calc(100vh - 128px);   
 }
 
 .calendar__table td {
     padding: 10px;
-    border: 1px solid rgb(214, 196, 196);
+    border: 0.1px solid rgb(193, 200, 202);
+    
     vertical-align: top;
     width: 14.29%;
     height: 20%;
@@ -28,23 +25,29 @@
 
 .calendar__weekday {
     font-weight: bold;
-    color:rgb(243, 136, 64);
+    color:rgb(218, 186, 119);
     font-size: 0.9em;
 }
 
+.calendar__othermonth{
+    color:rgb(223, 213, 213);
+}
 
 .button_plus {
-    display: inline-block;
-    width: 55px;
-    height: 55px;
+    display: block;
+    width: 50px;
+    height: 50px;
     text-decoration: none;
-    line-height: 55px;
-    vertical-align: auto;
+    line-height: 40px;
+    
+ 
     text-align:center;
-    color: rgb(255, 255, 255);
+    color:rgb(209, 202, 188);
     font-size: 45px;
-    background-color: #007bff;
-    border-radius: 50%;
+    color:rgb(218, 186, 119);
+    border: 1px solid rgb(218, 186, 119);
+
+    /* border-radius: 50%; */
 
     position: fixed;
     bottom: 30px;
@@ -54,8 +57,8 @@
 }
 
 .button_plus:hover {
-    color: #FFF;
-    font-size: 47px;
+    color: rgb(221, 126, 70);
+    
     
 }
 

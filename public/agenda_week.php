@@ -9,13 +9,13 @@
     $dossiers = new Agenda\Dossiers($pdo);
     $week = new Agenda\Week($_GET['week'] ?? null, $_GET['year'] ?? null);
     $start = $week->getMondayOfWeek();
-    var_dump($start);
+    // var_dump($start);
     $end = (clone $start) -> modify ('+ 6 days');
-    var_dump($end); 
+    // var_dump($end); 
     $dossiers = $dossiers->getDossiersBetweenByDay($start, $end);
-    var_dump($dossiers);
+    // var_dump($dossiers);
     $sunday=$week->getSundayOfWeek();
-    var_dump($sunday);
+    // var_dump($sunday);
     ?>
 
 

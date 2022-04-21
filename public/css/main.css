@@ -1,104 +1,232 @@
 body {
-    background-color: rgb(24, 65, 82);
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
 }
 
-#menu {
-    background-color: rgb(24, 65, 82);
-    position:fixed;
-    width: 100%;
+body, ul {
+    margin:0px;
+    padding:0px;
+}
+
+#logo {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    text-transform: uppercase;   
+}
+
+#header {
+    box-sizing: border-box ;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 70px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+#menu{
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+#menu a {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+  
+
+#menu a:hover {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    color: rgb(128, 132, 134);
+}
+
+#btn_mobile {
+    display:none;
+}
+
+
+
+
+
+#footer {
+    background-color: rgba(28, 71, 100);
+    width: 100vw;
+    
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+   
+    
+}
+
+.footer {
+    color: white;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.9rem 0.4rem;
   
 }
-#title {
+
+.footer:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+h2 {
     
-    padding-left: 5px;
-    padding-right: 100%;
-    padding-bottom: 0.3%;
-    font-size: 2.5rem;
-    text-transform: uppercase;
+    color:white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: rgb(255, 159, 15);
-    text-decoration: none;
-    text-align: left;
-}
-
-h3 {
-    margin-left:5px;
-    margin-top: 7rem;
-    font-size: 10rem;
-    font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-transform: uppercase;
-    color: rgb(255, 255, 255);   
+    /* width: 100vw; */
+    /* padding-left: 2rem;
+    padding-right: -2rem;
+    margin-left: 0rem; */
+    margin-top: -1rem;
+    padding-top: 0.2rem;
+    font-size: 3rem;
 }
 
 
-nav {
-    background-color: rgb(255, 255, 255);
+h4{
+    margin-top: 2.5rem;
+
+}
+
+h6 {
+    display: inline-block;
+}
+
+#mentions_legales {
+  margin: 2rem;
+}
+
+
+/******************** Page Contacts *****************/ 
+
+#contact_wrap {
+    position:relative;
+    overflow: hidden;
+    width:100vw;
+    height: 200vh;
+}
+
+#headphones {
+    position: absolute;
+    width: 110vw;
+    margin-left: -7vw;
+    margin-top: -35vh;
+
+}
+
+#contact_text {
+    position:absolute;
+    width: 50vw;
+    margin-top: 7rem;
+    margin-left: 45%;
     text-align: right;
 }
-.menu {
-    color: rgb(24, 65, 82);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-right: solid, 3px, rgb(24, 65, 82);
-    padding-right: 2rem;
+
+#contact_text h3 {
+    font-size: 2.3rem;
+    font-family: serif;
+}
+
+#contact_text h4 {
+    font-size: 2rem;
+    font-family: serif;
+    padding-bottom: -1rem;
+   
+}
+
+
+#contact_text h5 {
+    font-family: serif;
     font-size: 1.5rem;
-    display:inline;
-}
-
-.submenu {
-    list-style-type: none;
-    display: none;
- 
-
-}
-
-
-
-
-.menu:hover {
-    color: rgb(255, 159, 15);
-}
-
-h4 {
-    color:rgb(255, 159, 15);
-    background-color: rgb(24, 65, 82);
-    width: 100%;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 3rem;
-    padding: 1.4rem;
-    text-align: center;
-    margin-top: 10%;
+    padding-top: 5rem;
     
 }
 
-#nous_sommes {
-
-    border:solid white 3px;
-    margin-left: 10%;
-    margin-right: 10%;
-    /* background-color:rgba(0, 255, 157, 0.075) ; */
-    color:rgb(255, 255, 255);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 1.6rem;
-    padding: 2rem;
-}
-
-.ecriture {
-    padding: 0.4rem;
-    color:rgb(24, 65, 82);
-    background-color: white;
-    text-transform: uppercase;
-    font-family: 1rem;
-    text-align: center;
-}
-
-#div_approche {
-    width: 80%;
-    margin-left:10%;
-    text-align: center;
-    color: rgb(255, 159, 15);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+#contact_text p {
+    font-family: serif;
     font-size: 2rem;
+
 }
 
+#contact_text p a {
+    border:none;
+    
+ 
+}
+
+#contact_text p a:hover {
+    color:rgb(89, 95, 99);
+}
+
+#linkedin_logo {
+    width: 1.5rem;
+    
+}
+
+#rs_logo a {
+    padding: 0.3rem;
+}
+
+@media (max-width: 950px) {
+    #btn_mobile {
+        display: block;
+    }
+
+    #menu {
+        display:block;
+        position: absolute;
+        width: 100%;
+        top:70px;
+        right: 0;
+        background-color:white;
+        z-index: 1000;
+        text-align: center;
+        height: 0;
+        transition:  .4s;
+        visibility: hidden;
+        overflow-y: hidden;
+    }
+ 
+    .active #menu{
+        height: 22vh;
+        display: block;
+        visibility: visible;
+
+        
+    }
+
+    #menu a {
+        font-size: 1.6rem;
+        color:black; 
+        
+        
+  }
+
+    #menu a:hover {
+        color:rgb(128, 132, 134);
+        text-decoration: none;
+    }
+
+    #contact_div {
+    
+        text-align: left;
+        
+    
+    }
+
+
+    
+
+}

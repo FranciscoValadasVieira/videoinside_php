@@ -15,7 +15,7 @@
     // var_dump($end); 
     $dossiers = $dossiers->getDossiersBetweenByDay($start, $end);
     // var_dump($events);
-    var_dump($dossiers);
+    // var_dump($dossiers);
 
     ?>
     
